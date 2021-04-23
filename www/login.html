@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/materialize.css">
+    <title>Connexion</title>
+</head>
+
+<body>
+    <div class="container">
+        <br><br><br>
+        <div class="row">
+            <div class="col s12 m4 offset-m4">
+                <div class="card z-depth-4">
+                    <div class="card-content indigo center white-text">
+                        <span class="card-title">Connexion</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="input-field">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input type="text" id="uid">
+                            <label for="uid">Pseudo</label>
+                        </div>
+                        <div class="input-field">
+                            <i class="material-icons prefix">lock</i>
+                            <input type="password" id="mdp">
+                            <label for="mdp">Mot de passe</label>
+                        </div>
+                        <!-- <div>
+                            <label>
+                                &nbsp;<input id="indeterminate-checkbox" type="checkbox" />
+                                <span>Connexion automatique</span>
+                            </label>
+                        </div> -->
+                        <br>
+                        <div>
+                            <label>
+                                &nbsp;<button id="connectBtn" class="waves-effect waves-light btn indigo"
+                                    style="width:100%">Connexion</button>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="cordova.js"></script>
+    <script src="js/jquery-3.6.0.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/materialize.js"></script>
+
+    <script>
+        
+        function validate() {
+            var username = document.getElementById("uid").value;
+            var password = document.getElementById("mdp").value;
+            getUsers(username, password);
+
+        }
+
+        function getUsers(pseudo, password) {
+            // $.getJSON('http://localhost:5557/users/', function (e) {
+                $.getJSON('http://10.0.2.2:5557/users/', function (e) {
+                console.log(e);
+
+                var i = 0;
+                while ((pseudo != e[i].login || password != e[i].pwd) && i < e.length) {
+                    i++;
+                }
+
+                if (pseudo == e[i].login && password == e[i].pwd) {
+                    alert("Bienvenue " + pseudo);
+                    window.location.replace ("home.html");
+                    return false
+                } else {
+                    alert("Veuillez ressayer!");
+                }
+
+            });
+        }
+        $('#connectBtn').on('click', validate);
+
+    </script>
+
+</body>
+
+</html>

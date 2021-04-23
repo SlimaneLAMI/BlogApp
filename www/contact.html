@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!-- <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/materialize.css">
+  <title>Contact</title>
+</head>
+
+<body>
+  <div class="navbar-fixed">
+    <nav class="nav-wrapper indigo">
+      <div class="container">
+        <a href="#" class="brand-logo">Site</a>
+        <a href="#" class="sidenav-trigger" data-target="mobile-demo">
+          <i class="material-icons">menu</i>
+        </a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="information.html">Information</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <ul class="sidenav indigo lighten-1" id="mobile-demo">
+    <li><a href="home.html">Home</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="information.html">Information</a></li>
+  </ul>
+  <div class="container">
+    <section class="page-section" id="contact">
+      <div class="container">
+        <!-- Contact Section Heading-->
+        <h4 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contactez-moi</h4>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+          <div class="divider-custom-line"></div>
+          <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+          <div class="divider-custom-line"></div>
+        </div>
+        <!-- Contact Section Form-->
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
+            <form id="contactForm" name="sentMessage" novalidate="novalidate">
+              <div class="control-group">
+                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                  <label>Nom</label>
+                  <input class="form-control" id="name" type="text" placeholder="Nom" required="required"
+                    data-validation-required-message="Veuillez saisir votre nom svp !" />
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+              <div class="control-group">
+                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                  <label>Email</label>
+                  <input class="form-control" id="email" type="email" placeholder="Email" required="required"
+                    data-validation-required-message="Veuillez saisir votre email svp !" />
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+              <div class="control-group">
+                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                  <label>Numéro de téléphone</label>
+                  <input class="form-control" id="phone" type="tel" placeholder="Numéro de téléphone"
+                    required="required"
+                    data-validation-required-message="Veuillez saisir votre numéro de téléphone svp !" />
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+              <div class="control-group">
+                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                  <label>Message</label>
+                  <textarea class="form-control" id="message" rows="5" placeholder="Message" required="required"
+                    data-validation-required-message="Veuillez saisir votre message svp !"></textarea>
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+              <br />
+              <div id="success"></div>
+              <div class="form-group"><button class="waves-effect waves-light btn indigo" id="sendMessageButton"
+                  type="submit">Envoyer</button></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+
+
+
+  <script src="cordova.js"></script>
+  <script src="js/jquery-3.6.0.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/materialize.js"></script>
+</body>
+
+</html>
