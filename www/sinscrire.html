@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/materialize.css">
-    <title>Connexion</title>
+    <title>S'inscrire</title>
 </head>
 
 <body>
@@ -22,10 +22,15 @@
         <div class="row">
             <div class="col s12 m4 offset-m4">
                 <div class="card z-depth-4">
-                    <div class="card-content indigo center white-text">
-                        <span class="card-title">Connexion</span>
+                    <div class="card-content indigo accent-2 center white-text">
+                        <span class="card-title">Inscription</span>
                     </div>
                     <div class="card-content">
+                        <div class="input-field">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input type="text" id="uName">
+                            <label for="uName">Nom</label>
+                        </div>
                         <div class="input-field">
                             <i class="material-icons prefix">account_circle</i>
                             <input type="text" id="uid">
@@ -36,43 +41,24 @@
                             <input type="password" id="mdp">
                             <label for="mdp">Mot de passe</label>
                         </div>
-                        <!-- <div>
-                            <label>
-                                &nbsp;<input id="indeterminate-checkbox" type="checkbox" />
-                                <span>Connexion automatique</span>
-                            </label>
-                        </div> -->
-                        <p id="repConnect" class="red-text">Pseudo et/ou mot de passe inconnus !</p>
+                        <p id="repPseudo" class="red-text">Pseudo existant !</p>
                         <div>
                             <label>
-                                &nbsp;<button id="inscrireBtn" class="waves-effect waves-light btn indigo accent-2"
+                                &nbsp;<button id="sinscrireBtn" class="waves-effect waves-light btn indigo accent-2"
                                     style="width:100%">s'inscrire</button>
                             </label>
                         </div>
                         <div>
                             <label>
-                                &nbsp;<button id="connectBtn" class="waves-effect waves-light btn indigo"
-                                    style="width:100%">Connexion</button>
+                                &nbsp;<button id="retourBtn" class="waves-effect waves-light btn indigo"
+                                    style="width:100%">Retour</button>
                             </label>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
     </div>
-
-
-
-
-
-
-
-
-
-
-
 
 
     <script src="cordova.js"></script>
@@ -82,52 +68,34 @@
 
     <script>
 
-        function validate() {
+        function inscriptionVal() {
+            var name = document.getElementById("uName").value;
             var username = document.getElementById("uid").value;
             var password = document.getElementById("mdp").value;
-            getUsers(username, password);
-
+            registerUser(name, username, password);
         }
 
-        function getUsers(pseudo, password) {
+        function registerUser(name, username, password) {
             // $.getJSON('http://localhost:5557/users/', function (e) {
                 $.getJSON('http://10.0.2.2:5557/users/', function (e) {
                 console.log(e);
-                let affResOk = $("#repConnect");
-                let affRepIns = $("#inscrireBtn");
-                const user = e.find(element => pseudo == element.login && password == element.pwd)
+                let affPseudo = $("#repPseudo");
+                const user = e.find(element => username == element.login)
                 if (user) {
-                    alert("Bienvenue " + user.nom + ".");
-                    window.location.replace("home.html");
+                    affPseudo.fadeIn();
                 } else {
-                    affResOk.fadeIn();
-                    affRepIns.fadeIn();
-                    
+                    // $.post( "http://localhost:5557/users/", {"nom" : name, "login": username, "pwd": password } );
+                    $.post( "http://10.0.2.2:5557/users/", {"nom" : name, "login": username, "pwd": password } );
+                    alert("Votre compte a été crée, bienvenue "+name);
+                    window.location.replace("home.html")                    
                 };
-
-                //--------------ou---------------
-                // const user = e.find(element => {
-                //     if(pseudo == element.login && password == element.pwd){
-                //         return element;
-                //     } 
-                // })
-                // if(user){
-                //     alert("Bienvenue " + pseudo);
-                //     window.location.replace("home.html");
-                // } else {
-                //     alert("Veuillez ressayer!");
-                // };
-
-
-
             });
         }
-
-        function sinscrire(){
-            window.location.replace("sinscrire.html")
+        function funRetour(){
+            window.location.replace("login.html")
         };
-        $('#connectBtn').on('click', validate);
-        $("#inscrireBtn").on('click', sinscrire);
+        $('#retourBtn').on('click', funRetour);
+        $("#sinscrireBtn").on('click', inscriptionVal);
 
     </script>
 

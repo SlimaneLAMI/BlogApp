@@ -125,3 +125,7 @@ h1 {
 #mobile-demo{
     padding-top: 12px;
 }
+
+#inscrireBtn, #repConnect, #repPseudo{
+    display: none;
+}
