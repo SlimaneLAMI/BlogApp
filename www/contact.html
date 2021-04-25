@@ -20,7 +20,9 @@
   <div class="navbar-fixed">
     <nav class="nav-wrapper indigo">
       <div class="container">
-        <a href="#" class="brand-logo">Site</a>
+        <div>
+          <a href="home.html"><img id="imgLogo" src="img/logo.png" class="brand-logo"></a>
+        </div>
         <a href="#" class="sidenav-trigger" data-target="mobile-demo">
           <i class="material-icons">menu</i>
         </a>
@@ -40,69 +42,41 @@
     <li><a href="contact.html">Contact</a></li>
     <li><a href="information.html">Information</a></li>
   </ul>
+
   <div class="container">
-    <section class="page-section" id="contact">
-      <div class="container">
-        <!-- Contact Section Heading-->
-        <h4 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contactez-moi</h4>
-        <!-- Icon Divider-->
-        <div class="divider-custom">
-          <div class="divider-custom-line"></div>
-          <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-          <div class="divider-custom-line"></div>
-        </div>
-        <!-- Contact Section Form-->
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
-            <form id="contactForm" name="sentMessage" novalidate="novalidate">
-              <div class="control-group">
-                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                  <label>Nom</label>
-                  <input class="form-control" id="name" type="text" placeholder="Nom" required="required"
-                    data-validation-required-message="Veuillez saisir votre nom svp !" />
-                  <p class="help-block text-danger"></p>
-                </div>
-              </div>
-              <div class="control-group">
-                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                  <label>Email</label>
-                  <input class="form-control" id="email" type="email" placeholder="Email" required="required"
-                    data-validation-required-message="Veuillez saisir votre email svp !" />
-                  <p class="help-block text-danger"></p>
-                </div>
-              </div>
-              <div class="control-group">
-                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                  <label>Numéro de téléphone</label>
-                  <input class="form-control" id="phone" type="tel" placeholder="Numéro de téléphone"
-                    required="required"
-                    data-validation-required-message="Veuillez saisir votre numéro de téléphone svp !" />
-                  <p class="help-block text-danger"></p>
-                </div>
-              </div>
-              <div class="control-group">
-                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                  <label>Message</label>
-                  <textarea class="form-control" id="message" rows="5" placeholder="Message" required="required"
-                    data-validation-required-message="Veuillez saisir votre message svp !"></textarea>
-                  <p class="help-block text-danger"></p>
-                </div>
-              </div>
-              <br />
-              <div id="success"></div>
-              <div class="form-group"><button class="waves-effect waves-light btn indigo" id="sendMessageButton"
-                  type="submit">Envoyer</button></div>
-            </form>
-          </div>
-        </div>
+    <div class="card-content white-text">
+      <h5 class="card-title center">Contactez-nous</h5>
+    </div>
+    <div class="card-content">
+      <div class="input-field">
+        <i class="material-icons prefix">contacts</i>
+        <input type="text" id="subName">
+        <label for="subName">Nom</label>
       </div>
-    </section>
+      <div class="input-field">
+        <i class="material-icons prefix">contact_mail</i>
+        <input type="email" id="subEmail" data-validation-required-message="Veuillez saisir votre message svp !">
+        <label for="subEmail">Email</label>
+      </div>
+      <div class="input-field">
+        <i class="material-icons prefix">contact_phone</i>
+        <input type="text" id="subTel">
+        <label for="subTel">Numéro de téléphone</label>
+      </div>
+      <div class="input-field">
+        <i class="material-icons prefix">message</i>
+        <textarea type="text" id="subMsg"></textarea>
+        <label for="subMsg">Message</label>
+      </div>
 
+      <br>
+      <div>
+        <label>
+          &nbsp;<button id="submitBtn" class="waves-effect waves-light btn indigo">Envoyer</button>
+        </label>
+      </div>
+    </div>
   </div>
-
-
-
 
   <script src="cordova.js"></script>
   <script src="js/jquery-3.6.0.js"></script>

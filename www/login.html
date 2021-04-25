@@ -75,7 +75,7 @@
     <script src="js/materialize.js"></script>
 
     <script>
-        
+
         function validate() {
             var username = document.getElementById("uid").value;
             var password = document.getElementById("mdp").value;
@@ -85,21 +85,31 @@
 
         function getUsers(pseudo, password) {
             // $.getJSON('http://localhost:5557/users/', function (e) {
-                $.getJSON('http://10.0.2.2:5557/users/', function (e) {
+            $.getJSON('http://10.0.2.2:5557/users/', function (e) {
                 console.log(e);
 
-                var i = 0;
-                while ((pseudo != e[i].login || password != e[i].pwd) && i < e.length) {
-                    i++;
-                }
-
-                if (pseudo == e[i].login && password == e[i].pwd) {
-                    alert("Bienvenue " + pseudo);
-                    window.location.replace ("home.html");
-                    return false
+                const user = e.find(element => pseudo == element.login && password == element.pwd)
+                if (user) {
+                    alert("Bienvenue " + user.prenom + ".");
+                    window.location.replace("home.html");
                 } else {
-                    alert("Veuillez ressayer!");
-                }
+                    alert("Pseudo et/ou mot de passe inconnus !");
+                };
+
+                //--------------ou---------------
+                // const user = e.find(element => {
+                //     if(pseudo == element.login && password == element.pwd){
+                //         return element;
+                //     } 
+                // })
+                // if(user){
+                //     alert("Bienvenue " + pseudo);
+                //     window.location.replace("home.html");
+                // } else {
+                //     alert("Veuillez ressayer!");
+                // };
+
+
 
             });
         }
