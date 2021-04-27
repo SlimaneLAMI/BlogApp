@@ -45,7 +45,7 @@
   <div class="container">
     <h5 class="center white-text">Information</h5>
 
-
+    <p id="deviceInfoText"></p>
 
   </div>
 
@@ -57,6 +57,12 @@
   <script src="js/jquery-3.6.0.js"></script>
   <script src="js/index.js"></script>
   <script src="js/materialize.js"></script>
+  <script type="text/javascript">
+    document.addEventListener("deviceready", function () {
+      var deviceinfo = "cordova:" + device.cordova + "<br>Model:" + device.model + "<br>UUID:" + device.uuid + "<br>Platform:" + device.platform + "(" + device.version + ")";
+      document.getElementById("deviceInfoText").innerHTML = deviceinfo;
+    }, false);
+  </script>
 </body>
 
 </html>
